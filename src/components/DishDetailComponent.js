@@ -8,53 +8,53 @@ class DishDetail extends Component {
     };
   }
 
-  //   renderDish(dish){
-  //       if(dish!==null){
-  //           return(
+  renderDish(dish) {
+    if (dish !== null) {
+      return (
+        <div className="col-12 col-md-5 m-1">
+          <Card>
+            <CardImg
+              width="100%"
+              src={this.props.dishes.image}
+              alt={this.props.dishes.name}
+            />
+            <CardBody>
+              <CardTitle className="h4">{this.props.dishes.name}</CardTitle>
+              <CardText>{this.props.dishes.description}</CardText>
+            </CardBody>
+          </Card>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
+  }
 
-  //           )
-  //       }
-  //   }
-  render() {
-    let dish = "";
-    let comment = "";
-    if (this.props.dishes !== null) {
-      comment = this.props.dishes.comments.map((comment, i) => {
+  renderComments(dish) {
+    if (dish !== null) {
+      var dishComment = dish.comments.map((comment, i) => {
         return (
-          <div key={i}>
+          <Card key={i}>
             <CardText>{comment.comment}</CardText>
             <CardText>
               --{comment.author}, {comment.date}
             </CardText>
-          </div>
+          </Card>
         );
       });
-      console.log(comment);
-      dish = (
-        <Card className="col-12 col-md-5 m-1">
-          <CardImg
-            width="100%"
-            src={this.props.dishes.image}
-            alt={this.props.dishes.name}
-          />
-          <CardBody>
-            <CardTitle className="h5">{this.props.dishes.name}</CardTitle>
-            <CardText>{this.props.dishes.description}</CardText>
-          </CardBody>
-        </Card>
-      );
     } else {
-      dish = <div></div>;
+      console.log(this.props.dishes);
+      return <div></div>;
     }
-    console.log(comment);
+    console.log(dishComment);
+  }
+  render() {
     return (
-      <div className="container">
-        <div className="row">
-          {dish}
-          <div className="col-12 col-md-5 m-1">
-            <h5>{this.props.heading}</h5>
-            {comment}
-          </div>
+      <div className="row">
+        {this.renderDish(this.props.dishes)}
+        {this.renderComments(this.props.dishes)}
+        <div className="col-12 col-md-5 m-1">
+          {this.renderComments(this.props.dishes)}
         </div>
       </div>
     );
