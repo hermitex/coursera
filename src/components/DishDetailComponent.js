@@ -32,27 +32,28 @@ class DishDetail extends Component {
 
   renderComments(dish) {
     if (dish !== null) {
-      var dishComment = dish.comments.map((comment, i) => {
-        return (
-          <Card key={i}>
-            <CardText>{comment.comment}</CardText>
-            <CardText>
-              --{comment.author}, {comment.date}
-            </CardText>
-          </Card>
-        );
-      });
-    } else {
-      console.log(this.props.dishes);
-      return <div></div>;
+      return (
+        <ul className="list-unstyled">
+          <li className="h4">Comments</li>
+          {dish.comments.map((comment, i) => {
+            return (
+              <div key={i} className="mb-2">
+                <li>{comment.comment}</li>
+                <li>
+                  --{comment.author}, {comment.date}
+                </li>
+              </div>
+            );
+          })}
+        </ul>
+      );
     }
-    console.log(dishComment);
+    return <div></div>;
   }
   render() {
     return (
       <div className="row">
         {this.renderDish(this.props.dishes)}
-        {this.renderComments(this.props.dishes)}
         <div className="col-12 col-md-5 m-1">
           {this.renderComments(this.props.dishes)}
         </div>
