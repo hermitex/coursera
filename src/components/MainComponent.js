@@ -4,6 +4,7 @@ import Menu from "../components/MenuComponent";
 import DishDetail from "../components/DishDetailComponent";
 import { DISHES } from "../shared/dishes";
 import Header from "./HeaderComponent";
+import Footer from "./FooterComponent";
 
 class Main extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Main extends Component {
             )[0]
           }
         ></DishDetail>
+        <Footer></Footer>
       </div>
     );
   }
