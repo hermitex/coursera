@@ -28,7 +28,7 @@ const RenderLeader = ({ leader }) => {
 };
 
 function About(props) {
-  const leaders = props.leaders.map((leader) => leader);
+  const leaders = <RenderLeader leader={props.leaders} />;
 
   return (
     <div className="container">
@@ -106,9 +106,7 @@ function About(props) {
           <h2>Corporate Leadership</h2>
         </div>
         <div className="col-12">
-          <Media list>
-            <RenderLeader leader={leaders} />
-          </Media>
+          <Media list>{leaders}</Media>
         </div>
       </div>
     </div>
